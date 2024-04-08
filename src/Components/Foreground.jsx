@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import Card from './Card'
+import AddCardbtn from './AddCardbtn';
 
 
 const Foreground = () => {
-
   const ref = useRef(null)
 
     const data =[
@@ -18,7 +18,7 @@ const Foreground = () => {
 
         },
         {desc: "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-         fileSize: ".9mb",
+         fileSize: ".2mb",
          close: true,
          tag:{
             isOpen: true,
@@ -38,15 +38,17 @@ const Foreground = () => {
 
         },
     ];
-    
 
   return (
-    <div ref={ref} className='fixed z-[3] top-0 left-0 w-full h-full flex gap-10 flex-wrap p-4'>
+    <>
+      <div ref={ref} className='fixed top-0 left-0 w-full h-full flex gap-10 flex-wrap p-4 cursor-pointer'>
         {data.map((item,index)=>(
-            <Card data={item} reference={ref}/>
+            <Card data={item} key={index} reference={ref}/>
+            
         ))}
-       
-    </div>
+      </div>
+      <AddCardbtn className="absolute flex  bottom-5 right-5 cursor-pointer"/>      
+    </>
   )
 }
 
